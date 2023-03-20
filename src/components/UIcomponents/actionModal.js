@@ -49,7 +49,7 @@ console.log(changes);
                       <label>Profile Image</label>
                       <div className="fileInput">
                         <div className="fileText">
-                          {changes[key]|| changes[key]?.name || ''}
+                          {changes[key]?.name || changes[key] || ''}
                         </div>
                         <label className="label" htmlFor={key}>
                           <Button

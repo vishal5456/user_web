@@ -6,6 +6,7 @@ import UserTab from "../UIcomponents/Usertab.js";
 import "../../Styles/home.css";
 import UserModal from "../UIcomponents/actionModal";
 import config from "../../config/index";
+import Modal from "../UIcomponents/modal";
 
 
 export default function Home() {
@@ -17,7 +18,9 @@ export default function Home() {
   const [action, setAction] = useState(null);
   const [selectedUserId, setSelectedUserId] = useState();
   const [changes, setChanges] = useState(initialState);
-  const [error , setError] = useState(initialState)
+  const [error , setError] = useState(initialState);
+  const [isModalOpen , setIsModalOpen] = useState(false)
+  const [errormessage , setErrormessage] = useState('')
 
   useEffect(() => {
     getUsers();
@@ -37,6 +40,10 @@ export default function Home() {
       }
     } catch (error) {
       console.log(error);
+      if([400,404].includes(error.response.status)){
+        setIsModalOpen(true);
+        setErrormessage(error.response.data.message)
+      }
     }
   };
 
@@ -61,6 +68,10 @@ export default function Home() {
     }
     } catch (error) {
       console.log(error);
+      if([400,404].includes(error.response.status)){
+        setIsModalOpen(true);
+        setErrormessage(error.response.data.message)
+      }
     }
   };
 
@@ -86,6 +97,10 @@ export default function Home() {
       
     } catch (error) {
       console.log(error);
+      if([400,404].includes(error.response.status)){
+        setIsModalOpen(true);
+        setErrormessage(error.response.data.message)
+      }
     }
   };
 
@@ -103,6 +118,10 @@ export default function Home() {
       }
     } catch (error) {
       console.log(error);
+      if([400,404].includes(error.response.status)){
+        setIsModalOpen(true);
+        setErrormessage(error.response.data.message)
+      }
     }
   };
 
@@ -231,6 +250,14 @@ export default function Home() {
           errors={error}
         />
       )}
+      {
+        isModalOpen && (
+          <Modal
+            handleClick={()=>{setIsModalOpen(false);setErrormessage('')}}
+            message={errormessage}
+          />
+        )
+      }
     </>
   );
 }
