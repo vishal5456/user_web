@@ -1,0 +1,35 @@
+.viewContainer{
+    width: 100vw;
+    height: 100vh;
+}
+.imageContainer{
+    height: 50%;
+}
+.profileContainer{
+    height: 50%;
+    background-color: aliceblue;
+}
+.image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.profileView{
+    padding: 20px;
+}
+.head{
+    font-size: 30px;
+    font-weight: bold;
+    color: chocolate;
+    margin-bottom: 20px;
+}
+.infoContainer{
+    margin-top: 20px;
+    margin-bottom: 60px;
+}
+.info{
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 3rem;
+    text-transform: capitalize;
+}
